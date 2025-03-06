@@ -434,85 +434,87 @@
       letter-spacing: 1px;
       opacity: 0.8;
     }
-
-/* ----- PRELOADER ----- */
+/* preloader  */
 .preloader {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(15, 15, 26, 0.95); /* Lebih smooth */
-  backdrop-filter: blur(15px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-  transition: opacity 0.5s ease, visibility 0.5s ease;
-}
-
-.preloader.fade-out {
-  opacity: 0;
-  visibility: hidden;
-}
-
-.preloader-content {
-  text-align: center;
-  padding: 20px;
-  border-radius: 15px;
-  background: rgba(26, 26, 46, 0.2); /* Transparansi lebih tinggi */
-  box-shadow: 0 0 50px rgba(107, 71, 255, 0.8); /* Glow lebih smooth */
-}
-
-.typing-text {
-  font-size: 3rem;
-  font-weight: 900;
-  margin: 0;
-  letter-spacing: 2px;
-  white-space: nowrap;
-  overflow: hidden;
-  width: 0;
-  color: #fff; /* Warna utama */
-  border-right: 3px solid rgba(255, 255, 255, 0.6);
-  animation: typing 2.5s steps(30) 0.5s forwards, 
-             blink 0.8s step-end infinite;
-  text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 
-               0 0 40px rgba(107, 71, 255, 0.6); /* Glow lebih modern */
-}
-
-.typing-text span {
-  display: inline-block;
-  transition: all 0.3s ease;
-  text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
-}
-
-.typing-text span:nth-child(1) { color: #7f5af0; }
-.typing-text span:nth-child(2) { color: #ffadad; }
-.typing-text span:nth-child(3) { color: #00c2ff; }
-.typing-text span:nth-child(4) { color: #ffa500; }
-.typing-text span:nth-child(5) {
-  background: linear-gradient(90deg, #ff0099, #00c2ff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: glitch 1s linear infinite 3.3s;
-}
-
-@keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
-}
-
-@keyframes blink {
-  50% { border-color: transparent }
-}
-
-@keyframes glitch {
-  0% { text-shadow: 2px 0 5px #ff0099, -2px 0 5px #00c2ff; }
-  25% { text-shadow: -2px 0 5px #ff0099, 2px 0 5px #00c2ff; }
-  50% { text-shadow: 2px 0 5px #00c2ff, -2px 0 5px #ff0099; }
-  75% { text-shadow: -2px 0 5px #ff0099, 2px 0 5px #00c2ff; }
-  100% { text-shadow: 2px 0 5px #00c2ff, -2px 0 5px #ff0099; }
-}
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 10, 26, 0.95);
+            backdrop-filter: blur(20px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.8s ease;
+        }
+        .preloader.fade-out {
+            opacity: 0;
+            visibility: hidden;
+        }
+        .preloader-content {
+            text-align: center;
+            opacity: 0;
+            transform: translateY(-50px);
+            animation: fadeIn 1s forwards 0.5s;
+        }
+        .title {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, #7f5af0, #ff5c8a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            opacity: 0;
+            transform: translateX(-100px);
+            animation: slideIn 1s forwards 1s;
+        }
+        .typing-text {
+            font-size: 1.2rem;
+            color: #7f5af0;
+            border-right: 2px solid #fff;
+            white-space: nowrap;
+            overflow: hidden;
+            width: 0;
+            animation: typing 2s steps(20) forwards 1.5s, blink 0.7s infinite;
+        }
+        .icon-container {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+            opacity: 0;
+            animation: fadeIn 1s forwards 2s;
+        }
+        .icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s;
+        }
+        .icon:hover {
+            transform: scale(1.2);
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-100px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        @keyframes blink {
+            50% { border-color: transparent }
+        }
 
     
     /* ----- CONTACT SECTION ----- */
@@ -745,13 +747,17 @@
 <body>
 
 <!-- PRELOADER -->
-<div class="preloader">
-  <div class="preloader-content">
-    <h1 class="typing-text">
-      <span>welcome</span> <span>to</span> <span>my</span> <span>website</span> <span>&lt;/&gt;</span>
-    </h1>
-  </div>
-</div>
+ <div class="preloader">
+        <div class="preloader-content">
+            <h1 class="title">Welcome To My Portfolio Website</h1>
+            <p class="typing-text">www.yilizidev</p>
+            <div class="icon-container">
+                <div class="icon">💻</div>
+                <div class="icon">👤</div>
+                <div class="icon">🐙</div>
+            </div>
+        </div>
+    </div>
 
   
   <!-- NAVBAR -->
@@ -1017,21 +1023,15 @@
   <script>
 
 // Preloader
-window.addEventListener('load', function() {
-  setTimeout(function() {
-    const preloader = document.querySelector('.preloader');
-    preloader.classList.add('fade-out');
-    
-    // Enable scrolling after preloader is gone
-    setTimeout(function() {
-      document.body.style.overflow = 'visible';
-      preloader.style.display = 'none';
-    }, 500);
-  }, 3000); // Preloader will show for 3 seconds
-});
-
-// Initially disable scrolling
-document.body.style.overflow = 'hidden';
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                const preloader = document.querySelector('.preloader');
+                preloader.classList.add('fade-out');
+                setTimeout(function() {
+                    preloader.style.display = 'none';
+                }, 800);
+            }, 3500);
+        });
     
     // Initialize AOS Animation
     AOS.init({
