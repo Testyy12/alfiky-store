@@ -414,12 +414,34 @@
         usernameInfo.style.color = "red";
         return;
       }
-      const url = `https://fastrestapis.fasturl.cloud/stalk/freefire?uid=${ffId}`;
-      fetch(url)
+      const urlMain = `https://fastrestapis.fasturl.cloud/stalk/freefire?uid=${ffId}`;
+      fetch(urlMain)
         .then(response => response.json())
         .then(data => {
           if (data.status === 200 && data.result && data.result.length > 0) {
             playerName = data.result[0].username;
+            usernameInfo.textContent = `Nama Pemain: ${playerName}`;
+            usernameInfo.style.color = "lime";
+          } else {
+            // Jika response tidak sesuai, coba endpoint cadangan
+            backupEndpoint(ffId, usernameInfo);
+          }
+        })
+        .catch(error => {
+          console.error(error);
+          // Jika error, coba endpoint cadangan
+          backupEndpoint(ffId, usernameInfo);
+        });
+    }
+
+    function backupEndpoint(ffId, usernameInfo) {
+      const urlBackup = `https://api.lolhuman.xyz/api/freefire/${ffId}?apikey=facd4b1df412ec0ab6f8649c`;
+      fetch(urlBackup)
+        .then(response => response.json())
+        .then(data => {
+          if (data.status === 200 && data.result) {
+            // Decode hasil yang URL encoded
+            playerName = decodeURIComponent(data.result);
             usernameInfo.textContent = `Nama Pemain: ${playerName}`;
             usernameInfo.style.color = "lime";
           } else {
@@ -430,7 +452,8 @@
         })
         .catch(error => {
           console.error(error);
-          usernameInfo.textContent = "Terjadi kesalahan saat ngecek ID.";
+          playerName = "";
+          usernameInfo.textContent = "Gak bisa cek data user. Pastikan ID valid!";
           usernameInfo.style.color = "red";
         });
     }
@@ -460,7 +483,7 @@ Metode Pembayaran: ${paymentMethod}
 Tanggal: ${date}
 Waktu: ${time}
 Terima kasih atas pembelian Anda di Alfikyy ID.`;
-      let whatsappLink = "https://wa.me/6285785313072?text=" + encodeURIComponent(message);
+      let whatsappLink = "https://wa.me/628xxxxx?text=" + encodeURIComponent(message);
       window.open(whatsappLink, "_blank");
     }
   </script>
