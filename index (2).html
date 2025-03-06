@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Alfikyy ID - Level Up Your Game</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <!-- AOS Animation -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap">
+  <style>
+    /* ----- GLOBAL STYLES ----- */
+    :root {
+      --primary: #6b47ff;
+      --secondary: #2c73ff;
+      --dark: #0f0f1a;
+      --light: #ffffff;
+      --accent: #ff47c4;
+    }
+    
+    body {
+      background: linear-gradient(135deg, var(--dark), #1a1a2e);
+      color: var(--light);
+      font-family: 'Poppins', sans-serif;
+      overflow-x: hidden;
+    }
+    
+    a, a:hover {
+      text-decoration: none;
+      color: var(--light);
+    }
+    
+    .section-title {
+      position: relative;
+      margin-bottom: 3rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--secondary), var(--accent));
+      border-radius: 4px;
+    }
+    
+    .text-gradient {
+      background: linear-gradient(90deg, var(--secondary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .btn {
+      border-radius: 30px;
+      padding: 12px 30px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.4s ease;
+    }
+    
+    .btn-glow {
+      background: linear-gradient(90deg, var(--secondary), var(--primary));
+      color: var(--light);
+      box-shadow: 0 5px 15px rgba(107, 71, 255, 0.4);
+      border: none;
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+    }
+    
+    .btn-glow:hover {
+      color: var(--light);
+      box-shadow: 0 8px 25px rgba(107, 71, 255, 0.6);
+      transform: translateY(-5px);
+    }
+    
+    .btn-glow::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      z-index: -1;
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+    
+    .btn-glow:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+    
+    /* ----- NAVBAR ----- */
+    .navbar {
+      background-color: rgba(15, 15, 26, 0.8);
+      backdrop-filter: blur(10px);
+      padding: 15px 0;
+      transition: all 0.4s ease;
+    }
+    
+    .navbar.scrolled {
+      background-color: rgba(15, 15, 26, 0.95);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+      padding: 10px 0;
+    }
+    
+    .navbar-brand {
+      font-weight: bold;
+      font-size: 1.8rem;
+      color: var(--light) !important;
+    }
+    
+    .navbar-brand span {
+      color: var(--primary);
+    }
+    
+    .nav-link {
+      color: var(--light) !important;
+      margin: 0 10px;
+      padding: 10px 5px !important;
+      position: relative;
+      font-weight: 500;
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--secondary), var(--primary));
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.4s ease;
+    }
+    
+    .nav-link:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+    
+    .navbar-toggler {
+      border: none;
+      padding: 0;
+    }
+    
+    .navbar-toggler-icon {
+      color: var(--light);
+      font-size: 1.5rem;
+    }
+    
+    /* ----- HERO SECTION ----- */
+    .hero-section {
+      position: relative;
+      padding: 200px 0 150px;
+      background: linear-gradient(135deg, rgba(15, 15, 26, 0.9), rgba(26, 26, 46, 0.7)), url('https://i.pinimg.com/originals/4f/e9/27/4fe9272a0ed8cc3a4f23fd27ca37058c.jpg');
+      background-size: cover;
+      background-position: center;
+      overflow: hidden;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+    
+    .hero-section h1 {
+      font-size: 4rem;
+      font-weight: 900;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .hero-section p {
+      font-size: 1.2rem;
+      margin-bottom: 40px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      opacity: 0.9;
+    }
+    
+    /* ----- FLOATING ELEMENTS ----- */
+    .floating-elements {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    
+    .floating-element {
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      background: rgba(107, 71, 255, 0.2);
+      border-radius: 2px;
+      animation: float 15s linear infinite;
+      z-index: 1;
+    }
+    
+    .floating-element:nth-child(1) {
+      top: 20%;
+      left: 10%;
+      width: 30px;
+      height: 30px;
+      animation-duration: 25s;
+      background: rgba(255, 71, 196, 0.2);
+    }
+    
+    .floating-element:nth-child(2) {
+      top: 40%;
+      left: 25%;
+      width: 20px;
+      height: 20px;
+      animation-duration: 17s;
+      animation-delay: 2s;
+    }
+    
+    .floating-element:nth-child(3) {
+      top: 30%;
+      right: 30%;
+      animation-duration: 21s;
+      animation-delay: 4s;
+      background: rgba(44, 115, 255, 0.2);
+    }
+    
+    .floating-element:nth-child(4) {
+      top: 60%;
+      right: 10%;
+      width: 25px;
+      height: 25px;
+      animation-duration: 22s;
+      animation-delay: 6s;
+      background: rgba(107, 71, 255, 0.2);
+    }
+    
+    .floating-element:nth-child(5) {
+      top: 70%;
+      left: 20%;
+      animation-duration: 18s;
+      animation-delay: 8s;
+      background: rgba(255, 71, 196, 0.2);
+    }
+    
+    @keyframes float {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.8;
+      }
+      50% {
+        transform: translateY(-120px) rotate(180deg);
+        opacity: 0.4;
+      }
+      100% {
+        transform: translateY(-240px) rotate(360deg);
+        opacity: 0;
+      }
+    }
+    
+    /* ----- FEATURES SECTION ----- */
+    .features-section {
+      padding: 100px 0;
+      position: relative;
+      background: linear-gradient(0deg, var(--dark), rgba(26, 26, 46, 0.8));
+      overflow: hidden;
+    }
+    
+    .feature-box {
+      background: rgba(15, 15, 26, 0.6);
+      border-radius: 16px;
+      padding: 40px 30px;
+      text-align: center;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: all 0.5s ease;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+    
+    .feature-box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(107, 71, 255, 0.1), rgba(44, 115, 255, 0.1));
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    
+    .feature-box:hover {
+      transform: translateY(-15px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+      border-color: rgba(107, 71, 255, 0.3);
+    }
+    
+    .feature-box:hover::before {
+      opacity: 1;
+    }
+    
+    .feature-icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-radius: 50%;
+      box-shadow: 0 10px 20px rgba(107, 71, 255, 0.3);
+      transition: all 0.5s ease;
+    }
+    
+    .feature-box:hover .feature-icon {
+      background: linear-gradient(135deg, var(--secondary), var(--accent));
+      transform: rotateY(180deg);
+    }
+    
+    .feature-icon i {
+      font-size: 32px;
+      color: var(--light);
+      transition: all 0.5s ease;
+    }
+    
+    .feature-box:hover .feature-icon i {
+      transform: rotateY(-180deg);
+    }
+    
+    .feature-box h4 {
+      margin-top: 20px;
+      font-weight: 700;
+      font-size: 1.4rem;
+      margin-bottom: 15px;
+    }
+    
+    .feature-box p {
+      margin-top: 10px;
+      font-size: 1rem;
+      opacity: 0.8;
+      line-height: 1.6;
+    }
+    
+    /* ----- PROMO SECTION ----- */
+    .promo-section {
+      padding: 100px 0;
+      background: linear-gradient(135deg, rgba(15, 15, 26, 0.9), rgba(26, 26, 46, 0.8)), url('https://wallpapercave.com/wp/wp6110615.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      position: relative;
+    }
+    
+    .promo-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 60px 40px;
+      background: rgba(15, 15, 26, 0.7);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+    
+    .promo-content h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 25px;
+      text-transform: uppercase;
+    }
+    
+    .promo-content p {
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+      opacity: 0.9;
+    }
+    
+    .countdown {
+      display: flex;
+      justify-content: center;
+      margin: 30px 0;
+      gap: 20px;
+    }
+    
+    .countdown-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 80px;
+    }
+    
+    .countdown-number {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--light);
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-radius: 10px;
+      width: 80px;
+      height: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+    
+    .countdown-label {
+      font-size: 0.8rem;
+      margin-top: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      opacity: 0.8;
+    }
+    
+    /* ----- CONTACT SECTION ----- */
+    .contact-section {
+      padding: 100px 0;
+      position: relative;
+      background: linear-gradient(0deg, rgba(26, 26, 46, 0.8), var(--dark));
+    }
+    
+    .contact-card {
+      background: rgba(15, 15, 26, 0.6);
+      border-radius: 16px;
+      padding: 40px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: all 0.5s ease;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+    
+    .contact-card:hover {
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+      border-color: rgba(107, 71, 255, 0.3);
+    }
+    
+    .contact-icon {
+      width: 70px;
+      height: 70px;
+      margin: 0 auto 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-radius: 50%;
+      font-size: 28px;
+      color: var(--light);
+      box-shadow: 0 10px 20px rgba(107, 71, 255, 0.3);
+    }
+    
+    .contact-card h4 {
+      margin-bottom: 15px;
+      font-weight: 700;
+      font-size: 1.3rem;
+    }
+    
+    .contact-card p {
+      margin-bottom: 20px;
+      opacity: 0.8;
+    }
+    
+    /* ----- INFO SECTION ----- */
+    .info-section {
+      padding: 100px 0;
+      position: relative;
+      background: linear-gradient(135deg, var(--dark), rgba(26, 26, 46, 0.9));
+      overflow: hidden;
+    }
+    
+    .info-card {
+      background: rgba(15, 15, 26, 0.6);
+      border-radius: 16px;
+      padding: 30px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      height: 100%;
+      transition: all 0.3s ease;
+    }
+    
+    .info-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      border-color: rgba(107, 71, 255, 0.3);
+    }
+    
+    .info-card h3 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      background: linear-gradient(90deg, var(--secondary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .info-card p {
+      font-size: 1rem;
+      line-height: 1.6;
+      opacity: 0.9;
+    }
+    
+    /* ----- FOOTER ----- */
+    footer {
+      background-color: rgba(15, 15, 26, 0.95);
+      padding: 60px 0 30px;
+      position: relative;
+    }
+    
+    .footer-links h5 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: var(--primary);
+    }
+    
+    .footer-links ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+    
+    .footer-links a {
+      color: var(--light);
+      opacity: 0.8;
+      transition: all 0.3s ease;
+    }
+    
+    .footer-links a:hover {
+      opacity: 1;
+      color: var(--accent);
+      padding-left: 5px;
+    }
+    
+    .social-icons {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    
+    .social-icon {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-radius: 50%;
+      color: var(--light);
+      font-size: 18px;
+      transition: all 0.3s ease;
+    }
+    
+    .social-icon:hover {
+      transform: translateY(-5px) scale(1.1);
+      background: linear-gradient(135deg, var(--secondary), var(--accent));
+      box-shadow: 0 10px 20px rgba(107, 71, 255, 0.3);
+    }
+    
+    .copyright {
+      margin-top: 50px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: center;
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
+    
+    /* ----- ANIMATIONS ----- */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(107, 71, 255, 0.4);
+      }
+      70% {
+        box-shadow: 0 0 0 15px rgba(107, 71, 255, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(107, 71, 255, 0);
+      }
+    }
+    
+    .pulse-animation {
+      animation: pulse 2s infinite;
+    }
+    
+    /* ----- RESPONSIVE STYLES ----- */
+    @media (max-width: 991px) {
+      .hero-section h1 {
+        font-size: 3rem;
+      }
+      
+      .feature-box, .contact-card {
+        margin-bottom: 30px;
+      }
+      
+      .countdown {
+        flex-wrap: wrap;
+      }
+    }
+    
+    @media (max-width: 767px) {
+      .hero-section h1 {
+        font-size: 2.5rem;
+      }
+      
+      .hero-section {
+        padding: 150px 0 100px;
+      }
+      
+      .section-title {
+        font-size: 1.8rem;
+      }
+      
+      .promo-content {
+        padding: 40px 20px;
+      }
+      
+      .countdown-number {
+        font-size: 2rem;
+        width: 60px;
+        height: 60px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Alfikyy<span>ID</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <i class="fas fa-bars navbar-toggler-icon"></i>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+          <li class="nav-item"><a class="nav-link" href="#promo">Promo</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="#info">Info</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="hero-section text-center" id="home">
+    <div class="floating-elements">
+      <div class="floating-element"></div>
+      <div class="floating-element"></div>
+      <div class="floating-element"></div>
+      <div class="floating-element"></div>
+      <div class="floating-element"></div>
+    </div>
+    <div class="container">
+      <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
+        <h1>LEVEL UP YOUR <span class="text-gradient">GAME</span></h1>
+        <p>Top up diamond FF paling cepat, aman, dan terpercaya. Nikmati harga spesial dan bonus melimpah hanya di Alfikyy ID!</p>
+        <a href="topup.html" class="btn btn-glow pulse-animation">TOP UP SEKARANG</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES SECTION -->
+  <section class="features-section" id="features">
+    <div class="container">
+      <h2 class="section-title text-center text-gradient" data-aos="fade-up">KENAPA PILIH KAMI</h2>
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="feature-box">
+            <div class="feature-icon">
+              <i class="fas fa-bolt"></i>
+            </div>
+            <h4>Proses Kilat</h4>
+            <p>Diamond masuk hanya dalam hitungan detik. Auto-delivery system 24/7 siap bikin kamu langsung push rank!</p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+          <div class="feature-box">
+            <div class="feature-icon">
+              <i class="fas fa-tag"></i>
+            </div>
+            <h4>Harga Bersahabat</h4>
+            <p>Harga termurah di pasaran dengan berbagai promo spesial. Dompet aman, mental boom lawan dijamin!</p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+          <div class="feature-box">
+            <div class="feature-icon">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <h4>100% Aman & Legal</h4>
+            <p>Transaksi dijamin aman dengan sistem pembayaran terenkripsi. Official partner Free Fire, no banned risk!</p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+          <div class="feature-box">
+            <div class="feature-icon">
+              <i class="fas fa-gift"></i>
+            </div>
+            <h4>Bonus Melimpah</h4>
+            <p>Dapatkan bonus item eksklusif dan cashback untuk setiap top up. Makin sering top up, makin banyak bonusnya!</p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
+          <div class="feature-box">
+            <div class="feature-icon">
+              <i class="fas fa-headset"></i>
+            </div>
+            <h4>Support 24/7</h4>
+            <p>CS ramah siap bantu kapan saja, bahkan tengah malam. Transaksi gagal? Langsung dibantu dalam 5 menit!</p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
+          <div class="feature-box">
+            <div class="feature-icon">
+              <i class="fas fa-mobile-alt"></i>
+            </div>
+            <h4>Multi Platform</h4>
+            <p>Top up mudah via website atau aplikasi. Support semua metode pembayaran, dari e-wallet sampai minimarket!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROMO SECTION -->
+  <section class="promo-section" id="promo">
+    <div class="container">
+      <div class="promo-content" data-aos="zoom-in">
+        <h2 class="text-center text-gradient">FLASH SALE!</h2>
+        <p class="text-center">Dapatkan bonus 30% extra diamonds untuk top up hari ini! Berlaku untuk pembelian minimal 100 diamonds. Buruan, promo terbatas!</p>
+        
+        <div class="countdown">
+          <div class="countdown-item">
+            <div class="countdown-number" id="countdown-days">00</div>
+            <div class="countdown-label">Hari</div>
+          </div>
+          <div class="countdown-item">
+            <div class="countdown-number" id="countdown-hours">00</div>
+            <div class="countdown-label">Jam</div>
+          </div>
+          <div class="countdown-item">
+            <div class="countdown-number" id="countdown-minutes">00</div>
+            <div class="countdown-label">Menit</div>
+          </div>
+          <div class="countdown-item">
+            <div class="countdown-number" id="countdown-seconds">00</div>
+            <div class="countdown-label">Detik</div>
+          </div>
+        </div>
+        
+        <div class="text-center mt-4">
+          <a href="topup.html" class="btn btn-glow">Claim Promo Sekarang</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <h2 class="section-title text-center text-gradient" data-aos="fade-up">HUBUNGI KAMI</h2>
+      <div class="row g-4">
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="contact-card">
+            <div class="contact-icon">
+              <i class="fab fa-whatsapp"></i>
+            </div>
+            <h4>WhatsApp</h4>
+            <p>Fast response 24/7 untuk semua pertanyaan kamu</p>
+            <a href="https://wa.me/628xxxxxxx" class="btn btn-glow">Chat Now</a>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="contact-card">
+            <div class="contact-icon">
+              <i class="fab fa-instagram"></i>
+            </div>
+            <h4>Instagram</h4>
+            <p>Follow kami untuk info promo terbaru</p>
+            <a href="#" class="btn btn-glow">@alfikyy.id</a>
+          </div>
+        </div>
+<div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="contact-card">
+            <div class="contact-icon">
+              <i class="far fa-envelope"></i>
+            </div>
+            <h4>Email</h4>
+            <p>Hubungi kami untuk kerjasama dan partnership</p>
+            <a href="mailto:alfikyyid@support.com" class="btn btn-glow">Kirim Email</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INFO SECTION -->
+  <section class="info-section" id="info">
+    <div class="container">
+      <h2 class="section-title text-center text-gradient" data-aos="fade-up">INFORMASI</h2>
+      <div class="row g-4">
+        <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="info-card">
+            <h3>Update Terbaru Free Fire</h3>
+            <p>Free Fire baru aja rilis update keren dengan karakter dan senjata baru! Season pass bulan ini bawa skin exclusive yang limited edition. Event kolaborasi dengan anime populer juga lagi berlangsung dengan hadiah item in-game super langka.</p>
+            <p>Top up sekarang untuk bisa ikutan event spesial dan dapatkan item koleksi terbatas yang bikin lawan auto minder!</p>
+          </div>
+        </div>
+        <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+          <div class="info-card">
+            <h3>Tips Untuk Pemain</h3>
+            <p>Pastikan kamu memasukkan ID dan Server yang benar saat melakukan top up. Rekomendasikan ke teman untuk bonus referral 5% dari setiap transaksi mereka. Join Discord komunitas kami untuk tips terbaru dan turnamen mingguan dengan hadiah jutaan rupiah.</p>
+            <p>Pro player FF selalu top up di Alfikyy ID karena proses cepat dan bisa di-request kapan aja, bahkan pas lagi livestream!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4">
+          <h3 class="mb-4">Alfikyy<span style="color: var(--primary);">ID</span></h3>
+          <p class="mb-4">Platform top up game terkemuka di Indonesia. Kami menyediakan layanan cepat, aman, dan terpercaya untuk semua kebutuhan gaming kamu.</p>
+          <div class="social-icons">
+            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-discord"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-4 mt-4 mt-lg-0">
+          <div class="footer-links">
+            <h5>Navigasi</h5>
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#features">Fitur</a></li>
+              <li><a href="#promo">Promo</a></li>
+              <li><a href="#contact">Kontak</a></li>
+              <li><a href="#info">Info</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 mt-4 mt-lg-0">
+          <div class="footer-links">
+            <h5>Layanan</h5>
+            <ul>
+              <li><a href="#">Top Up Diamond FF</a></li>
+              <li><a href="#">Membership</a></li>
+              <li><a href="#">Tournament</a></li>
+              <li><a href="#">Reseller Program</a></li>
+              <li><a href="#">Affiliate Marketing</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 mt-4 mt-lg-0">
+          <div class="footer-links">
+            <h5>Bantuan</h5>
+            <ul>
+              <li><a href="#">Cara Top Up</a></li>
+              <li><a href="#">FAQ</a></li>
+              <li><a href="#">Syarat & Ketentuan</a></li>
+              <li><a href="#">Kebijakan Privasi</a></li>
+              <li><a href="#">Hubungi Kami</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2025 Alfikyy ID. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Font Awesome -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+  <!-- AOS Animation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  
+  <script>
+    // Initialize AOS Animation
+    AOS.init({
+      duration: 800,
+      once: true
+    });
+    
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+    
+    // Countdown Timer
+    function updateCountdown() {
+      // Set the countdown end date (24 hours from now)
+      const now = new Date();
+      const endDate = new Date(now.getTime() + 24 * 60 * 60 * 1000);
+      
+      const timeLeft = endDate - now;
+      
+      // Calculate days, hours, minutes, seconds
+      const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+      
+      // Update the countdown display
+      document.getElementById('countdown-days').innerText = days.toString().padStart(2, '0');
+      document.getElementById('countdown-hours').innerText = hours.toString().padStart(2, '0');
+      document.getElementById('countdown-minutes').innerText = minutes.toString().padStart(2, '0');
+      document.getElementById('countdown-seconds').innerText = seconds.toString().padStart(2, '0');
+    }
+    
+    // Update the countdown every second
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+    
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

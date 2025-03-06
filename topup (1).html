@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Alfikyy ID - Top Up Free Fire</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <!-- AOS Animation -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap">
+  <style>
+    :root {
+      --primary: #6b47ff;
+      --secondary: #2c73ff;
+      --dark: #0f0f1a;
+      --light: #ffffff;
+      --accent: #ff47c4;
+    }
+    body {
+      background: linear-gradient(135deg, var(--dark), #1a1a2e);
+      color: var(--light);
+      font-family: 'Poppins', sans-serif;
+      overflow-x: hidden;
+    }
+    a, a:hover {
+      text-decoration: none;
+      color: var(--light);
+    }
+    /* ----- NAVBAR ----- */
+    .navbar {
+      background-color: rgba(15, 15, 26, 0.8);
+      backdrop-filter: blur(10px);
+      padding: 15px 0;
+      transition: all 0.4s ease;
+    }
+    .navbar.scrolled {
+      background-color: rgba(15, 15, 26, 0.95);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+      padding: 10px 0;
+    }
+    .navbar-brand {
+      font-weight: bold;
+      font-size: 1.8rem;
+      color: var(--light) !important;
+    }
+    .navbar-brand span {
+      color: var(--primary);
+    }
+    .nav-link {
+      color: var(--light) !important;
+      margin: 0 10px;
+      padding: 10px 5px !important;
+      position: relative;
+      font-weight: 500;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--secondary), var(--primary));
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.4s ease;
+    }
+    .nav-link:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+    .navbar-toggler {
+      border: none;
+      padding: 0;
+    }
+    .navbar-toggler-icon {
+      color: var(--light);
+      font-size: 1.5rem;
+    }
+    /* ----- SECTION TITLE ----- */
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 30px;
+      text-align: center;
+      text-transform: uppercase;
+    }
+    /* ----- FORM SECTION ----- */
+    .form-section {
+      padding: 100px 0;
+    }
+    .card-custom {
+      background: rgba(15,15,26,0.8);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 40px;
+      backdrop-filter: blur(10px);
+    }
+    .form-control, .form-select {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.2);
+      color: var(--light);
+    }
+    .form-control:focus, .form-select:focus {
+      box-shadow: none;
+      border-color: var(--primary);
+    }
+    /* ----- BUTTON STYLE ----- */
+    .btn-glow {
+      background: linear-gradient(90deg, var(--secondary), var(--primary));
+      color: var(--light);
+      box-shadow: 0 5px 15px rgba(107, 71, 255, 0.4);
+      border: none;
+      border-radius: 30px;
+      padding: 12px 30px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-glow:hover {
+      box-shadow: 0 8px 25px rgba(107, 71, 255, 0.6);
+      transform: translateY(-5px);
+    }
+    /* ----- DIAMOND CARD ----- */
+    .diamond-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    .diamond-card {
+      background: rgba(15,15,26,0.8);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 20px;
+      width: 150px;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .diamond-card:hover {
+      transform: scale(1.05);
+      border-color: var(--primary);
+    }
+    .diamond-card.selected {
+      border: 2px solid var(--accent);
+    }
+    .diamond-card img {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 10px;
+    }
+    .price-tag {
+      color: var(--primary);
+      font-weight: 600;
+    }
+    /* ----- FOOTER ----- */
+    footer {
+      background-color: rgba(15,15,26,0.95);
+      padding: 60px 0 30px;
+      margin-top: 100px;
+    }
+    .footer-links h5 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: var(--primary);
+    }
+    .footer-links ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+    .footer-links a {
+      color: var(--light);
+      opacity: 0.8;
+      transition: all 0.3s ease;
+    }
+    .footer-links a:hover {
+      opacity: 1;
+      color: var(--accent);
+      padding-left: 5px;
+    }
+    .social-icons {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    .social-icon {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-radius: 50%;
+      color: var(--light);
+      font-size: 18px;
+      transition: all 0.3s ease;
+    }
+    .social-icon:hover {
+      transform: translateY(-5px) scale(1.1);
+      background: linear-gradient(135deg, var(--secondary), var(--accent));
+      box-shadow: 0 10px 20px rgba(107, 71, 255, 0.3);
+    }
+    .copyright {
+      margin-top: 50px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: center;
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Alfikyy<span>ID</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <i class="fas fa-bars navbar-toggler-icon"></i>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#features">Features</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#promo">Promo</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#info">Info</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- TOPUP FORM SECTION -->
+  <section class="form-section" id="topup" data-aos="fade-up">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="card-custom">
+            <h2 class="section-title">Top Up Diamond Free Fire</h2>
+            <!-- Input ID Free Fire -->
+            <div class="mb-4">
+              <label for="ffId" class="form-label">Masukkan ID Free Fire</label>
+              <input type="text" class="form-control" id="ffId" placeholder="Contoh: 948384593">
+            </div>
+            <!-- Cek Username -->
+            <div class="mb-4 text-center">
+              <button class="btn btn-glow" onclick="checkFFId()">Cek Nama Pemain</button>
+              <p id="username-info" class="mt-2"></p>
+            </div>
+            <!-- Diamond Selection -->
+            <h4 class="mb-3 text-center">Pilih Jumlah Diamond</h4>
+            <div class="diamond-container">
+              <div class="diamond-card" onclick="selectDiamond(this)" data-package="50 Diamond" data-price="8000">
+                <img src="https://cdn-icons-png.flaticon.com/512/3281/3281341.png" alt="50 Diamond">
+                <h5>50 Diamond</h5>
+                <p class="price-tag">Rp 8.000</p>
+              </div>
+              <div class="diamond-card" onclick="selectDiamond(this)" data-package="70 Diamond" data-price="10000">
+                <img src="https://cdn-icons-png.flaticon.com/512/3281/3281341.png" alt="70 Diamond">
+                <h5>70 Diamond</h5>
+                <p class="price-tag">Rp 10.000</p>
+              </div>
+              <div class="diamond-card" onclick="selectDiamond(this)" data-package="140 Diamond" data-price="19000">
+                <img src="https://cdn-icons-png.flaticon.com/512/3281/3281341.png" alt="140 Diamond">
+                <h5>140 Diamond</h5>
+                <p class="price-tag">Rp 19.000</p>
+              </div>
+              <div class="diamond-card" onclick="selectDiamond(this)" data-package="355 Diamond" data-price="50000">
+                <img src="https://cdn-icons-png.flaticon.com/512/3281/3281341.png" alt="355 Diamond">
+                <h5>355 Diamond</h5>
+                <p class="price-tag">Rp 50.000</p>
+              </div>
+              <div class="diamond-card" onclick="selectDiamond(this)" data-package="720 Diamond" data-price="100000">
+                <img src="https://cdn-icons-png.flaticon.com/512/3281/3281341.png" alt="720 Diamond">
+                <h5>720 Diamond</h5>
+                <p class="price-tag">Rp 100.000</p>
+              </div>
+              <div class="diamond-card" onclick="selectDiamond(this)" data-package="1450 Diamond" data-price="190000">
+                <img src="https://cdn-icons-png.flaticon.com/512/3281/3281341.png" alt="1450 Diamond">
+                <h5>1450 Diamond</h5>
+                <p class="price-tag">Rp 190.000</p>
+              </div>
+            </div>
+            <!-- Payment Method -->
+            <div class="mt-4 mb-4">
+              <h4 class="mb-3 text-center">Metode Pembayaran</h4>
+              <div class="form-check text-center">
+                <input class="form-check-input" type="radio" name="paymentMethod" id="qris" value="QRIS" checked>
+                <label class="form-check-label" for="qris">QRIS</label>
+              </div>
+            </div>
+            <!-- Checkout Button -->
+            <div class="text-center">
+              <button class="btn btn-glow" onclick="checkout()">Check Out</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4">
+          <h3 class="mb-4">Alfikyy<span>ID</span></h3>
+          <p class="mb-4">Platform top up game terkemuka di Indonesia. Kami menyediakan layanan cepat, aman, dan terpercaya untuk semua kebutuhan gaming kamu.</p>
+          <div class="social-icons">
+            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-discord"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-4 mt-4 mt-lg-0">
+          <div class="footer-links">
+            <h5>Navigasi</h5>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="index.html#features">Fitur</a></li>
+              <li><a href="index.html#promo">Promo</a></li>
+              <li><a href="index.html#contact">Kontak</a></li>
+              <li><a href="index.html#info">Info</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 mt-4 mt-lg-0">
+          <div class="footer-links">
+            <h5>Layanan</h5>
+            <ul>
+              <li><a href="#">Top Up Diamond FF</a></li>
+              <li><a href="#">Membership</a></li>
+              <li><a href="#">Tournament</a></li>
+              <li><a href="#">Reseller Program</a></li>
+              <li><a href="#">Affiliate Marketing</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 mt-4 mt-lg-0">
+          <div class="footer-links">
+            <h5>Bantuan</h5>
+            <ul>
+              <li><a href="#">Cara Top Up</a></li>
+              <li><a href="#">FAQ</a></li>
+              <li><a href="#">Syarat & Ketentuan</a></li>
+              <li><a href="#">Kebijakan Privasi</a></li>
+              <li><a href="#">Hubungi Kami</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2025 Alfikyy ID. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Font Awesome -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+  <!-- AOS Animation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 800,
+      once: true
+    });
+    
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+    
+    let selectedPackage = null;
+    let selectedPrice = null;
+    let playerName = "";
+
+    function selectDiamond(element) {
+      document.querySelectorAll('.diamond-card').forEach(item => {
+        item.classList.remove('selected');
+      });
+      element.classList.add('selected');
+      selectedPackage = element.getAttribute('data-package');
+      selectedPrice = element.getAttribute('data-price');
+    }
+
+    function checkFFId() {
+      const ffId = document.getElementById('ffId').value.trim();
+      const usernameInfo = document.getElementById('username-info');
+      if (!ffId) {
+        usernameInfo.textContent = "Masukkan ID FF terlebih dahulu, bro!";
+        usernameInfo.style.color = "red";
+        return;
+      }
+      const url = `https://fastrestapis.fasturl.cloud/stalk/freefire?uid=${ffId}`;
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          if (data.status === 200 && data.result && data.result.length > 0) {
+            playerName = data.result[0].username;
+            usernameInfo.textContent = `Nama Pemain: ${playerName}`;
+            usernameInfo.style.color = "lime";
+          } else {
+            playerName = "";
+            usernameInfo.textContent = "Gak ketemu data user. Pastikan ID valid!";
+            usernameInfo.style.color = "red";
+          }
+        })
+        .catch(error => {
+          console.error(error);
+          usernameInfo.textContent = "Terjadi kesalahan saat ngecek ID.";
+          usernameInfo.style.color = "red";
+        });
+    }
+
+    function checkout() {
+      const ffId = document.getElementById('ffId').value.trim();
+      if (!ffId) {
+        alert("ID FF belum diisi!");
+        return;
+      }
+      if (!selectedPackage || !selectedPrice) {
+        alert("Pilih paket diamond dulu, bro!");
+        return;
+      }
+      let paymentMethod = "QRIS";
+      let now = new Date();
+      let date = now.toLocaleDateString('id-ID');
+      let time = now.toLocaleTimeString('id-ID');
+      let message = 
+`======================================== KONFIRMASI TOP UP ========================================
+ID Akun Free Fire: ${ffId}
+Nama Pemain: ${playerName ? playerName : 'Tidak ditemukan / Opsional'}
+Nama Barang: ${selectedPackage}
+Jumlah: ${selectedPackage}
+Harga: Rp ${selectedPrice}
+Metode Pembayaran: ${paymentMethod}
+Tanggal: ${date}
+Waktu: ${time}
+Terima kasih atas pembelian Anda di Alfikyy ID.`;
+      let whatsappLink = "https://wa.me/628xxxxx?text=" + encodeURIComponent(message);
+      window.open(whatsappLink, "_blank");
+    }
+  </script>
+</body>
+</html>
